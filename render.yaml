@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: leeky
+    runtime: docker
+    plan: starter
+    healthCheckPath: /healthz
+    disk:
+      name: leeky-storage
+      mountPath: /var/data
+      sizeGB: 10
+    envVars:
+      - key: RUNEPAY_API_KEY
+        sync: false
+      - key: PUBLIC_URL
+        sync: false
+      - key: LEEKY_DATA_DIR
+        value: /var/data/access
+      - key: LEEKY_PRIVATE_DIR
+        value: /var/data/private-videos
